@@ -1,7 +1,7 @@
 <?php
 
 /**
- * AppserverIo\Psr\Context\ArrayContextTest
+ * AppserverIo\Psr\Context\ContextInterface
  *
  * NOTICE OF LICENSE
  *
@@ -21,7 +21,7 @@
 namespace AppserverIo\Psr\Context;
 
 /**
- * Test for the array based context implementation.
+ * The most basic interface for a context implementation.
  *
  * @author    Tim Wagner <tw@appserver.io>
  * @copyright 2015 TechDivision GmbH <info@appserver.io>
@@ -29,34 +29,15 @@ namespace AppserverIo\Psr\Context;
  * @link      https://github.com/appserver-io-psr/context
  * @link      http://www.appserver.io
  */
-class ArrayContextTest extends \PHPUnit_Framework_TestCase
+interface ContextInterface
 {
 
     /**
-     * The servlet module instance to test.
+     * Returns the value with the passed name from the context.
      *
-     * @var \AppserverIo\Psr\Context\ArrayContext
-     */
-    protected $context;
-
-    /**
-     * Initializes the base context to test.
+     * @param string $key The key of the value to return from the context.
      *
-     * @return void
+     * @return mixed The requested attribute
      */
-    public function setUp()
-    {
-        $this->context = new ArrayContext();
-    }
-
-    /**
-     * Test context attribute setter and getter.
-     *
-     * @return void
-     */
-    public function testSetAndGetAttribute()
-    {
-        $this->context->setAttribute($key = 'key', $value = 'Test');
-        $this->assertSame($value, $this->context->getAttribute($key));
-    }
+    public function getAttribute($key);
 }
